@@ -4,6 +4,6 @@ package com.accp.springboot.dao.lzjdao;
  * @author 小虎
  *
  */
-public interface IDomeDao {
+public interface IZDomeDao {
 
 }

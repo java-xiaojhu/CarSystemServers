@@ -4,6 +4,6 @@ package com.accp.springboot.controller.pqwcontroller;
  * @author 小虎
  *
  */
-public class DomeController {
+public class PDomeController {
 
 }

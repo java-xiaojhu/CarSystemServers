@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>  
+    <context id="mySqlTables"  targetRuntime="MyBatis3">  
+        <commentGenerator>  
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>  
+        </commentGenerator>  
+        <!--数据库链接URL，用户名、密码 -->  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/carsystem" userId="root" password="123456">
+        </jdbcConnection>
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+        <!--pojo生成位置-->  
+        <javaModelGenerator targetPackage="com.accp.springboot.pojo" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        <!-- 
+		tableName是数据库中的表名或视图名
+		domainObjectName是实体类名
+		-->  
+		<!--Message表1-->
+        <table tableName="car" domainObjectName="Car" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="carbrand" domainObjectName="Carbrand" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+   		<!--Message表1-->
+        <table tableName="cartype" domainObjectName="Cartype" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="company" domainObjectName="Company" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+		<!--Message表1-->
+        <table tableName="customercategory" domainObjectName="Customercategory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="department" domainObjectName="Department" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+		<!--Message表1-->
+        <table tableName="emp" domainObjectName="Emp" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="goods" domainObjectName="Goods" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   	
+		<!--Message表1-->
+        <table tableName="goodsdetailed" domainObjectName="Goodsdetailed" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="goodtype" domainObjectName="Goodtype" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   <!--Message表1-->
+        <table tableName="historyconsumption" domainObjectName="Historyconsumption" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="itemtype" domainObjectName="Itemtype" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+		<!--Message表1-->
+        <table tableName="jobtype" domainObjectName="Jobtype" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="mechanic" domainObjectName="Mechanic" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+		<!--Message表1-->
+        <table tableName="picking" domainObjectName="Picking" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="position" domainObjectName="Position" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   		
+		<!--Message表1
+		```````````````````````
+		-->
+        <table tableName="purchase" domainObjectName="Purchase" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="repair" domainObjectName="Repair" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+		<!--Message表1-->
+        <table tableName="sale" domainObjectName="Sale" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="student" domainObjectName="Student" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   <!--Message表1-->
+        <table tableName="serviceitems" domainObjectName="Serviceitems" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="starclass" domainObjectName="Starclass" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+   		<!--Message表1-->
+        <table tableName="supplers" domainObjectName="Supplers" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="tab_function" domainObjectName="Tabfunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+    <!--Message表1-->
+        <table tableName="tbl_perm" domainObjectName="Tblperm" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="team" domainObjectName="Team" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+    <!--Message表1-->
+        <table tableName="users" domainObjectName="Users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--student表2-->
+		<table tableName="warehousing" domainObjectName="Warehousing" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>   
+    </context>  
+</generatorConfiguration>  
