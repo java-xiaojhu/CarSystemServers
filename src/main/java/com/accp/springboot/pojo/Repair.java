@@ -3,8 +3,6 @@ package com.accp.springboot.pojo;
 import java.util.Date;
 
 public class Repair {
-    private Integer repairid;
-
     private String repairnumber;
 
     private Date makedates;
@@ -24,14 +22,6 @@ public class Repair {
     private Float repairprice;
 
     private String reamks;
-
-    public Integer getRepairid() {
-        return repairid;
-    }
-
-    public void setRepairid(Integer repairid) {
-        this.repairid = repairid;
-    }
 
     public String getRepairnumber() {
         return repairnumber;

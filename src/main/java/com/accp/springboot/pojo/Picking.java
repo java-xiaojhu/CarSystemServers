@@ -3,8 +3,6 @@ package com.accp.springboot.pojo;
 import java.util.Date;
 
 public class Picking {
-    private Integer pickingid;
-
     private String pickingnumber;
 
     private Date makedates;
@@ -22,14 +20,6 @@ public class Picking {
     private Float picking;
 
     private String reamks;
-
-    public Integer getPickingid() {
-        return pickingid;
-    }
-
-    public void setPickingid(Integer pickingid) {
-        this.pickingid = pickingid;
-    }
 
     public String getPickingnumber() {
         return pickingnumber;

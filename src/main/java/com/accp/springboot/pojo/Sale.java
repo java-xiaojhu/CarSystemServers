@@ -3,8 +3,6 @@ package com.accp.springboot.pojo;
 import java.util.Date;
 
 public class Sale {
-    private Integer saleid;
-
     private String salenumber;
 
     private Date makedates;
@@ -20,14 +18,6 @@ public class Sale {
     private String setmethod;
 
     private String reamks;
-
-    public Integer getSaleid() {
-        return saleid;
-    }
-
-    public void setSaleid(Integer saleid) {
-        this.saleid = saleid;
-    }
 
     public String getSalenumber() {
         return salenumber;

@@ -3,8 +3,6 @@ package com.accp.springboot.pojo;
 import java.util.Date;
 
 public class Purchase {
-    private Integer pid;
-
     private String purchasenumber;
 
     private Date pdate;
@@ -22,14 +20,6 @@ public class Purchase {
     private Integer pstaute;
 
     private String reamks;
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
 
     public String getPurchasenumber() {
         return purchasenumber;

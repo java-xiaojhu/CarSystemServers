@@ -3,8 +3,6 @@ package com.accp.springboot.pojo;
 import java.util.Date;
 
 public class Warehousing {
-    private Integer wid;
-
     private String wnumbers;
 
     private Date wdate;
@@ -18,14 +16,6 @@ public class Warehousing {
     private Integer wstate;
 
     private String reamks;
-
-    public Integer getWid() {
-        return wid;
-    }
-
-    public void setWid(Integer wid) {
-        this.wid = wid;
-    }
 
     public String getWnumbers() {
         return wnumbers;
