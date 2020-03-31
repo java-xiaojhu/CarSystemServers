@@ -4,6 +4,6 @@ package com.accp.springboot.service.pqwservice;
  * @author 小虎
  *
  */
-public class DomeService {
+public class PDomeService {
 
 }

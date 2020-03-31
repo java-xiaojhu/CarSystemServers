@@ -4,6 +4,6 @@ package com.accp.springboot.service.lzjservice;
  * @author 小虎
  *
  */
-public class DomeService {
+public class LDomeService {
 
 }

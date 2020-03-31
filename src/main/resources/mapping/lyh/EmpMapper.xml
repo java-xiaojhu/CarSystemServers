@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.springboot.dao.lyhdao.IEmpDao">
+	<resultMap type="user" id="userMap">		
+		<id column="empid" property="empid" />
+		<result column="empname" property="empname" />
+		<association property="tabRole" resultMap="roleMap" />
+	</resultMap>
+	<resultMap type="role" id="roleMap">
+		<id column="rid" property="rid" />
+		<result column="rcode" property="rcode" />
+		<result column="rname" property="rname" />
+		<result column="rstatus" property="rstatus" />
+		<result column="rcd" property="createdate" />
+		<result column="createby" property="createby" />
+		<collection property="Tabfunction" ofType="function">
+			<id column="id" property="id" />
+			<result column="functioncode" property="functioncode" />
+			<result column="functionname" property="functionname" />
+			<result column="creationtime" property="creationtime" />
+			<association property="tabfunction" column="parentid"
+				select="selectParentFun"></association>
+		</collection>
+	</resultMap>
+
+	<select id="selectParentFun" resultType="Tabfunction">
+		select * from
+		tbl_function where id=#{0}
+	</select>
+
+	<!-- 每个sql操作写好注释 -->
+	<select id="userLogin" resultMap="userMap">
+		SELECT empid ,`empname`,r.`rname`,f.`functionName`,f.`parentId` FROM emp
+		INNER JOIN tab_role AS r ON r.`rid`=emp.`roleid`
+		INNER JOIN `tbl_perm` AS e
+		ON e.`rid`=r.`rid`
+		INNER JOIN `tab_function` AS f ON f.`id`=e.`fid`
+		WHERE `empid`=#{id} AND `emppas`=#{pas}
+	</select>
+
+</mapper>   

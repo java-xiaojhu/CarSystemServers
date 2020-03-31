@@ -7,7 +7,6 @@ public class Team {
 
     private Integer teamtime;
 
-    private Integer departmentid;
 
     public Integer getTeamid() {
         return teamid;
@@ -33,11 +32,4 @@ public class Team {
         this.teamtime = teamtime;
     }
 
-    public Integer getDepartmentid() {
-        return departmentid;
-    }
-
-    public void setDepartmentid(Integer departmentid) {
-        this.departmentid = departmentid;
-    }
 }

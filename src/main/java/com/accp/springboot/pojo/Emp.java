@@ -2,7 +2,12 @@ package com.accp.springboot.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+@TableName("emp")
 public class Emp {
+	@TableId(value="empid",type = IdType.AUTO)
     private Integer empid;
 
     private String empname;
@@ -44,8 +49,18 @@ public class Emp {
     private String reasonsleaving;
 
     private Date leavedate;
+    
+    private TabRole tabRole;
 
-    public Integer getEmpid() {
+    public TabRole getTabRole() {
+		return tabRole;
+	}
+
+	public void setTabRole(TabRole tabRole) {
+		this.tabRole = tabRole;
+	}
+
+	public Integer getEmpid() {
         return empid;
     }
 
