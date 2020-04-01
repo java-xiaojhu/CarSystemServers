@@ -1,14 +1,9 @@
-package com.accp.springboot.pojo;
+package com.accp.springboot.vo.lyhvo;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+public class TabFunctionVo {
 
-@TableName("tab_function")
-public class Tabfunction {
-	@TableId(value = "id", type = IdType.AUTO)
 	private Integer id;
 
 	private String functioncode;
@@ -18,6 +13,8 @@ public class Tabfunction {
 	private Integer parentid;
 
 	private Date creationtime;
+
+	private TabFunctionVo parenttabfunction;
 
 	public Integer getId() {
 		return id;
@@ -32,7 +29,7 @@ public class Tabfunction {
 	}
 
 	public void setFunctioncode(String functioncode) {
-		this.functioncode = functioncode == null ? null : functioncode.trim();
+		this.functioncode = functioncode;
 	}
 
 	public String getFunctionname() {
@@ -40,7 +37,7 @@ public class Tabfunction {
 	}
 
 	public void setFunctionname(String functionname) {
-		this.functionname = functionname == null ? null : functionname.trim();
+		this.functionname = functionname;
 	}
 
 	public Integer getParentid() {
@@ -58,4 +55,16 @@ public class Tabfunction {
 	public void setCreationtime(Date creationtime) {
 		this.creationtime = creationtime;
 	}
+
+	public TabFunctionVo getParenttabfunction() {
+		return parenttabfunction;
+	}
+
+	public void setParenttabfunction(TabFunctionVo parenttabfunction) {
+		this.parenttabfunction = parenttabfunction;
+	}
+
+	
+
+	
 }
