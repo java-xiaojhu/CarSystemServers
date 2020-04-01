@@ -26,7 +26,10 @@ public class RoleController {
 
 	@Resource
 	private RoleService roleService;
-	
+	/**
+	 * 查询所有角色以及所拥有的权限
+	 * @return
+	 */
 	@GetMapping
 	public List findTabRole() {
 		List rotree = new ArrayList();
