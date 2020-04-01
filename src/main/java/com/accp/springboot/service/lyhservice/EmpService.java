@@ -13,7 +13,7 @@ public class EmpService {
 	@Resource
 	private IEmpDao iEmpDao;
 
-	public EmpVo findUserLogin(Integer id, String pas) {
+	public Emp findUserLogin(Integer id, String pas) {
 		return iEmpDao.userLogin(id, pas);
 	}
 	

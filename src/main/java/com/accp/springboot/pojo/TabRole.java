@@ -1,7 +1,9 @@
 package com.accp.springboot.pojo;
 
 import java.util.Date;
+import java.util.List;
 
+import com.accp.springboot.vo.lyhvo.TabFunctionVo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -20,6 +22,16 @@ public class TabRole {
 	private Date creationtime;
 
 	private String createby;
+
+	private List<Tabfunction> tabfunctions;
+
+	public List<Tabfunction> getTabunctions() {
+		return tabfunctions;
+	}
+
+	public void setTabunctions(List<Tabfunction> tabfunctions) {
+		this.tabfunctions = tabfunctions;
+	}
 
 	public Integer getRid() {
 		return rid;
@@ -52,8 +64,6 @@ public class TabRole {
 	public void setRstatus(Integer rstatus) {
 		this.rstatus = rstatus;
 	}
-
-
 
 	public Date getCreationtime() {
 		return creationtime;

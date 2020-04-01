@@ -47,7 +47,7 @@ public class EmpVo {
 
 	private Date leavedate;
 
-	private TabRoleVo tabRole;
+	private TabRoleVo tabRolevo;
 
 	public Integer getEmpid() {
 		return empid;
@@ -217,13 +217,15 @@ public class EmpVo {
 		this.leavedate = leavedate;
 	}
 
-	public TabRoleVo getTabRole() {
-		return tabRole;
+	public TabRoleVo getTabRolevo() {
+		return tabRolevo;
 	}
 
-	public void setTabRole(TabRoleVo tabRole) {
-		this.tabRole = tabRole;
+	public void setTabRolevo(TabRoleVo tabRolevo) {
+		this.tabRolevo = tabRolevo;
 	}
+
+	
 
 	
 

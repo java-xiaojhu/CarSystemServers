@@ -21,8 +21,16 @@ public class RoleService {
 	 * 查询所有角色
 	 * @return
 	 */
-	public List<TabRole> findTabRole(){
-		return iRoleDao.selectList(null);
+	public List<TabRole> findTabRoles(){
+		return iRoleDao.selectTabRoles();
+	}
+	/**
+	 * 查询单个角色的权限
+	 * @param rid
+	 * @return
+	 */
+	public TabRole findTabRole(Integer rid){
+		return iRoleDao.selectTabRole(rid);
 	}
 
 }

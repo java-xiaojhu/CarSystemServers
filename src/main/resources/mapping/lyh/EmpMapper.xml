@@ -3,19 +3,19 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.springboot.dao.lyhdao.IEmpDao">
-	<resultMap type="EmpVo" id="userMap">
+	<resultMap type="Emp" id="userMap">
 		<id column="empid" property="empid" />
 		<result column="empname" property="empname" />
 		<association property="tabRole" resultMap="roleMap" />
 	</resultMap>
-	<resultMap type="TabRoleVo" id="roleMap">
+	<resultMap type="TabRole" id="roleMap">
 		<id column="rid" property="rid" />
 		<result column="rode" property="rode" />
 		<result column="rname" property="rname" />
 		<result column="rstatus" property="rstatus" />
 		<result column="creationtime" property="creationtime" />
 		<result column="createby" property="createby" />
-		<collection property="tabFunctions" ofType="tabFunction">
+		<collection property="tabfunctions" ofType="tabfunction">
 			<id column="id" property="id" />
 			<result column="functioncode" property="functioncode" />
 			<result column="functionname" property="functionname" />
@@ -24,16 +24,8 @@
 				column="parentid" select="selectParentFun"></association>
 		</collection>
 	</resultMap>
-<!-- 	<resultMap type="TabFunctionVo" id="tabfunction">
-		<id column="id" property="id" />
-		<result column="functioncode" property="functioncode" />
-		<result column="functionname" property="functionname" />
-		<result column="creationtime" property="creationtime" />
-		<association property="parenttabfunction"
-			column="parentid" select="selectParentFun"></association>
-	</resultMap> -->
 
-	<select id="selectParentFun" resultType="tabFunction">
+	<select id="selectParentFun" resultType="tabfunction">
 		select * from
 		tab_function where id=#{0}
 	</select>
@@ -62,10 +54,7 @@
 		INNER JOIN `tab_function` AS f ON f.`id`=tbl_perm.`fid`
 		INNER JOIN tab_role AS r ON r.`rid`=tbl_perm.`rid`
 	</select>
-	
-<!-- 	<select id="selectTabfunction" resultMap="tabfunction">
-		SELECT * FROM `tab_function`
-	</select> -->
+
 
 
 </mapper>   

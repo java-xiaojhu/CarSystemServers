@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.springboot.vo.lyhvo.*;
+import com.accp.springboot.pojo.Emp;
+import com.accp.springboot.pojo.Tabfunction;
 import com.accp.springboot.service.lyhservice.EmpService;
 import com.accp.springboot.service.lyhservice.RoleService;
 
@@ -36,7 +38,7 @@ public class EmpController {
 
 	@GetMapping("loginIn/{id}/{pas}")
 	public Map<String, Object> loginIn(@PathVariable Integer id, @PathVariable String pas, HttpSession session) {
-		EmpVo user = empService.findUserLogin(id, pas);
+		Emp user = empService.findUserLogin(id, pas);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if (user != null) {
 			session.setAttribute("USER", user);
@@ -62,19 +64,19 @@ public class EmpController {
 	}
 
 	@GetMapping("getSessionUser")
-	public EmpVo getUserInfo(HttpSession session) throws Exception {
-		EmpVo user = (EmpVo) session.getAttribute("USER");
+	public Emp getUserInfo(HttpSession session) throws Exception {
+		Emp user = (Emp) session.getAttribute("USER");
 		return user;
 	}
 
 	@GetMapping("getFunTree")
 	public List getUserFunTree(HttpSession session) {
 		// 从session获得用户，以便得到权限
-		EmpVo user = (EmpVo) session.getAttribute("USER");
+		Emp user = (Emp) session.getAttribute("USER");
 		List tree = new ArrayList();
 		Set<String> topMeunNames = new TreeSet<String>();
 		Set<String> menuNames = new TreeSet<String>();// 剔除重复值，保存一级菜单名称
-		for (TabFunctionVo fun : user.getTabRole().getTabFunctions()) {
+		for (Tabfunction fun : user.getTabRole().getTabunctions()) {
 			if (fun.getParenttabfunction().getParentid() == 0) {
 				topMeunNames.add(fun.getParenttabfunction().getFunctionname());
 			}else {
@@ -88,14 +90,14 @@ public class EmpController {
 			topnode.put("text", topmeun);
 			List topnodeChild = new ArrayList();
 			List<String> erji=new ArrayList<String>();
-			for (TabFunctionVo fun : user.getTabRole().getTabFunctions()) {
+			for (Tabfunction fun : user.getTabRole().getTabunctions()) {
 				// 匹配是否是当前菜单的子项
 				if (topmeun.equals(fun.getParenttabfunction().getFunctionname())) {
 					Map<String, Object> n = new HashMap<String, Object>();
 					n.put("id", 1);
 					n.put("text", fun.getFunctionname());			
 					List nodeChild = new ArrayList();
-					for (TabFunctionVo fun1 : user.getTabRole().getTabFunctions()) {
+					for (Tabfunction fun1 : user.getTabRole().getTabunctions()) {
 						// 匹配是否是当前菜单的子项
 						if (fun.getFunctionname().equals(fun1.getParenttabfunction().getFunctionname())) {
 							Map<String, Object> n1 = new HashMap<String, Object>();
@@ -112,25 +114,6 @@ public class EmpController {
 			tree.add(topnode);		
 
 		}
-		// 遍历二级菜单名称，生成三级菜单项
-//		for (String name : menuNames) {
-//			// 节点【初始化】
-//			Map<String, Object> node = new HashMap<String, Object>();
-//			node.put("id", 1);// 0:根级菜单
-//			node.put("text", name);
-//			List nodeChild = new ArrayList();
-//			for (Tabfunction fun : user.getTabRole().getTabfunctions()) {
-//				// 匹配是否是当前菜单的子项
-//				if (name.equals(fun.getParenttabfunction().getFunctionname())) {
-//					Map<String, Object> n = new HashMap<String, Object>();
-//					n.put("id", fun.getFunctioncode());
-//					n.put("text", fun.getFunctionname());
-//					nodeChild.add(n);
-//				}
-//			}
-//			node.put("children", nodeChild);
-//			tree.add(node);
-//		}
 		return tree;
 	}
 }

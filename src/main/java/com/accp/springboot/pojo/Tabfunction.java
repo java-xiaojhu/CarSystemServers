@@ -2,6 +2,7 @@ package com.accp.springboot.pojo;
 
 import java.util.Date;
 
+import com.accp.springboot.vo.lyhvo.TabFunctionVo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -18,6 +19,16 @@ public class Tabfunction {
 	private Integer parentid;
 
 	private Date creationtime;
+	
+	private Tabfunction parenttabfunction;
+
+	public Tabfunction getParenttabfunction() {
+		return parenttabfunction;
+	}
+
+	public void setParenttabfunction(Tabfunction parenttabfunction) {
+		this.parenttabfunction = parenttabfunction;
+	}
 
 	public Integer getId() {
 		return id;
