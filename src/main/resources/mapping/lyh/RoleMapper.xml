@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.springboot.dao.lyhdao.IRoleDao">
+
+	<resultMap type="TabRole" id="tabfunction">
+		<id column="id" property="id" />
+		<result column="functioncode" property="functioncode" />
+		<result column="functionname" property="functionname" />
+		<result column="creationtime" property="creationtime" />
+		<association property="parenttabfunction"
+			column="parentid" select="selectParentFun"></association>
+	</resultMap>
+	<select id="selectParentFun" resultType="tabfunction">
+		select * from
+		tab_function where id=#{0}
+	</select>
+
+	<select id="selectTabRoles" resultMap="tabfunction">
+		SELECT * FROM tab_role
+	</select>
+
+	<select id="selectTabRole" resultMap="tabfunction">
+		SELECT * FROM tab_role
+		<where>
+			<if test="rid!=null">
+				rid=#{rid}
+			</if>
+		</where>
+	</select>
+
+</mapper>

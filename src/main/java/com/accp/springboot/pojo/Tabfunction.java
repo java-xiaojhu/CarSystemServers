@@ -2,21 +2,39 @@ package com.accp.springboot.pojo;
 
 import java.util.Date;
 
+<<<<<<< HEAD
+=======
+import com.accp.springboot.vo.lyhvo.TabFunctionVo;
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("tab_function")
 public class Tabfunction {
+<<<<<<< HEAD
 	@TableId(value="id",type = IdType.AUTO)
     private Integer id;
+=======
+	@TableId(value = "id", type = IdType.AUTO)
+	private Integer id;
 
-    private String functioncode;
+	private String functioncode;
 
-    private String functionname;
+	private String functionname;
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
-    private Integer parentid;
+	private Integer parentid;
 
+	private Date creationtime;
+	
+	private Tabfunction parenttabfunction;
+
+	public Tabfunction getParenttabfunction() {
+		return parenttabfunction;
+	}
+
+<<<<<<< HEAD
     private Date creationtime;
     
     private Tabfunction tabfunction;
@@ -32,40 +50,49 @@ public class Tabfunction {
 	public Integer getId() {
         return id;
     }
+=======
+	public void setParenttabfunction(Tabfunction parenttabfunction) {
+		this.parenttabfunction = parenttabfunction;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
-    public String getFunctioncode() {
-        return functioncode;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setFunctioncode(String functioncode) {
-        this.functioncode = functioncode == null ? null : functioncode.trim();
-    }
+	public String getFunctioncode() {
+		return functioncode;
+	}
 
-    public String getFunctionname() {
-        return functionname;
-    }
+	public void setFunctioncode(String functioncode) {
+		this.functioncode = functioncode == null ? null : functioncode.trim();
+	}
 
-    public void setFunctionname(String functionname) {
-        this.functionname = functionname == null ? null : functionname.trim();
-    }
+	public String getFunctionname() {
+		return functionname;
+	}
 
-    public Integer getParentid() {
-        return parentid;
-    }
+	public void setFunctionname(String functionname) {
+		this.functionname = functionname == null ? null : functionname.trim();
+	}
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
-    }
+	public Integer getParentid() {
+		return parentid;
+	}
 
-    public Date getCreationtime() {
-        return creationtime;
-    }
+	public void setParentid(Integer parentid) {
+		this.parentid = parentid;
+	}
 
-    public void setCreationtime(Date creationtime) {
-        this.creationtime = creationtime;
-    }
+	public Date getCreationtime() {
+		return creationtime;
+	}
+
+	public void setCreationtime(Date creationtime) {
+		this.creationtime = creationtime;
+	}
 }

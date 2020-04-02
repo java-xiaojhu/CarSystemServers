@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.springboot.dao.lyhdao.IEmpDao">
+	<resultMap type="Emp" id="userMap">
+		<id column="empid" property="empid" />
+		<result column="empname" property="empname" />
+		<association property="tabRole" resultMap="roleMap" />
+	</resultMap>
+	<resultMap type="TabRole" id="roleMap">
+		<id column="rid" property="rid" />
+		<result column="rode" property="rode" />
+		<result column="rname" property="rname" />
+		<result column="rstatus" property="rstatus" />
+		<result column="creationtime" property="creationtime" />
+		<result column="createby" property="createby" />
+		<collection property="tabfunctions" ofType="tabfunction">
+			<id column="id" property="id" />
+			<result column="functioncode" property="functioncode" />
+			<result column="functionname" property="functionname" />
+			<result column="creationtime" property="creationtime" />
+			<association property="parenttabfunction"
+				column="parentid" select="selectParentFun"></association>
+		</collection>
+	</resultMap>
+
+	<select id="selectParentFun" resultType="tabfunction">
+		select * from
+		tab_function where id=#{0}
+	</select>
+
+	<!-- 登录 -->
+	<select id="userLogin" resultMap="userMap">
+		SELECT empid
+		,`empname`,r.rid,r.rode,r.`rname`,r.rstatus,r.creationTime,r.createby,f.id,f.functioncode,f.creationtime,f.`functionName`,f.`parentid`
+		FROM emp
+		INNER JOIN
+		tab_role AS r ON r.`rid`=emp.`roleid`
+		INNER JOIN
+		`tbl_perm` AS e
+		ON
+		e.`rid`=r.`rid`
+		INNER JOIN `tab_function` AS f ON
+		f.`id`=e.`fid`
+		WHERE
+		`empid`=#{id} AND `emppas`=#{pas}
+	</select>
+	<!-- 角色控制 -->
+	<select id="selectTabRole" resultMap="roleMap">
+		SELECT
+		r.rode,r.`rname`,r.rstatus,r.creationTime,r.createby,f.id,f.functioncode,f.creationtime,f.`functionName`,f.`parentid`
+		FROM tbl_perm
+		INNER JOIN `tab_function` AS f ON f.`id`=tbl_perm.`fid`
+		INNER JOIN tab_role AS r ON r.`rid`=tbl_perm.`rid`
+	</select>
+
+
+
+</mapper>   

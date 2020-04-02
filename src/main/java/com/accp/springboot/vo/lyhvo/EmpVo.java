@@ -1,30 +1,15 @@
-package com.accp.springboot.pojo;
+package com.accp.springboot.vo.lyhvo;
 
 import java.util.Date;
 
-<<<<<<< HEAD
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-@TableName("emp")
-public class Emp {
-	@TableId(value="empid",type = IdType.AUTO)
-    private Integer empid;
-=======
-import com.accp.springboot.vo.lyhvo.TabRoleVo;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.accp.springboot.pojo.TabRole;
 
-@TableName("emp")
-public class Emp {
-	@TableId(value = "empid", type = IdType.AUTO)
+public class EmpVo {
 	private Integer empid;
 
 	private String empname;
 
 	private String emppas;
->>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
 	private String empsex;
 
@@ -61,38 +46,12 @@ public class Emp {
 	private String reasonsleaving;
 
 	private Date leavedate;
-	
-	private TabRole tabRole;
 
-	public TabRole getTabRole() {
-		return tabRole;
-	}
-
-<<<<<<< HEAD
-    private Date leavedate;
-    
-    private TabRole tabRole;
-
-    public TabRole getTabRole() {
-		return tabRole;
-	}
-
-	public void setTabRole(TabRole tabRole) {
-		this.tabRole = tabRole;
-	}
-
-	public Integer getEmpid() {
-        return empid;
-    }
-=======
-	public void setTabRole(TabRole tabRole) {
-		this.tabRole = tabRole;
-	}
+	private TabRoleVo tabRolevo;
 
 	public Integer getEmpid() {
 		return empid;
 	}
->>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
 	public void setEmpid(Integer empid) {
 		this.empid = empid;
@@ -103,7 +62,7 @@ public class Emp {
 	}
 
 	public void setEmpname(String empname) {
-		this.empname = empname == null ? null : empname.trim();
+		this.empname = empname;
 	}
 
 	public String getEmppas() {
@@ -111,7 +70,7 @@ public class Emp {
 	}
 
 	public void setEmppas(String emppas) {
-		this.emppas = emppas == null ? null : emppas.trim();
+		this.emppas = emppas;
 	}
 
 	public String getEmpsex() {
@@ -119,7 +78,7 @@ public class Emp {
 	}
 
 	public void setEmpsex(String empsex) {
-		this.empsex = empsex == null ? null : empsex.trim();
+		this.empsex = empsex;
 	}
 
 	public Date getEmpbirday() {
@@ -135,7 +94,7 @@ public class Emp {
 	}
 
 	public void setEmpphone(String empphone) {
-		this.empphone = empphone == null ? null : empphone.trim();
+		this.empphone = empphone;
 	}
 
 	public String getEmplianphone() {
@@ -143,7 +102,7 @@ public class Emp {
 	}
 
 	public void setEmplianphone(String emplianphone) {
-		this.emplianphone = emplianphone == null ? null : emplianphone.trim();
+		this.emplianphone = emplianphone;
 	}
 
 	public String getEmpaddress() {
@@ -151,7 +110,7 @@ public class Emp {
 	}
 
 	public void setEmpaddress(String empaddress) {
-		this.empaddress = empaddress == null ? null : empaddress.trim();
+		this.empaddress = empaddress;
 	}
 
 	public String getEmptwophone() {
@@ -159,7 +118,7 @@ public class Emp {
 	}
 
 	public void setEmptwophone(String emptwophone) {
-		this.emptwophone = emptwophone == null ? null : emptwophone.trim();
+		this.emptwophone = emptwophone;
 	}
 
 	public String getEmptwoname() {
@@ -167,7 +126,7 @@ public class Emp {
 	}
 
 	public void setEmptwoname(String emptwoname) {
-		this.emptwoname = emptwoname == null ? null : emptwoname.trim();
+		this.emptwoname = emptwoname;
 	}
 
 	public Float getEmpmoney() {
@@ -247,7 +206,7 @@ public class Emp {
 	}
 
 	public void setReasonsleaving(String reasonsleaving) {
-		this.reasonsleaving = reasonsleaving == null ? null : reasonsleaving.trim();
+		this.reasonsleaving = reasonsleaving;
 	}
 
 	public Date getLeavedate() {
@@ -257,4 +216,17 @@ public class Emp {
 	public void setLeavedate(Date leavedate) {
 		this.leavedate = leavedate;
 	}
+
+	public TabRoleVo getTabRolevo() {
+		return tabRolevo;
+	}
+
+	public void setTabRolevo(TabRoleVo tabRolevo) {
+		this.tabRolevo = tabRolevo;
+	}
+
+	
+
+	
+
 }
