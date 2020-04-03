@@ -69,4 +69,13 @@ public class Tabfunction {
 	public void setCreationtime(Date creationtime) {
 		this.creationtime = creationtime;
 	}
+
+	@Override
+	public String toString() {
+		return "Tabfunction [id=" + id + ", functioncode=" + functioncode + ", functionname=" + functionname
+				+ ", parentid=" + parentid + ", creationtime=" + creationtime + ", parenttabfunction="
+				+ parenttabfunction + "]";
+	}
+	
+	
 }

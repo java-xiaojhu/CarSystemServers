@@ -24,6 +24,16 @@ public class TabRole {
 	private String createby;
 
 	private List<Tabfunction> tabfunctions;
+	
+	private List<Tblperm> tblperms;
+
+	public List<Tblperm> getTblperms() {
+		return tblperms;
+	}
+
+	public void setTblperms(List<Tblperm> tblperms) {
+		this.tblperms = tblperms;
+	}
 
 	public List<Tabfunction> getTabunctions() {
 		return tabfunctions;
@@ -84,7 +94,9 @@ public class TabRole {
 	@Override
 	public String toString() {
 		return "TabRole [rid=" + rid + ", rode=" + rode + ", rname=" + rname + ", rstatus=" + rstatus
-				+ ", creationTime=" + creationtime + ", createby=" + createby + "]";
+				+ ", creationtime=" + creationtime + ", createby=" + createby + ", tabfunctions=" + tabfunctions + "]";
 	}
+
+	
 
 }

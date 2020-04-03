@@ -4,7 +4,29 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.springboot.dao.lyhdao.IRoleDao">
 
-	<resultMap type="TabRole" id="tabfunction">
+	<resultMap type="TabRole" id="roleMap">
+		<id column="rid" property="rid" />
+		<result column="rode" property="rode" />
+		<result column="rname" property="rname" />
+		<result column="rstatus" property="rstatus" />
+		<result column="rtime" property="creationtime" />
+		<result column="createby" property="createby" />
+		<collection property="tabfunctions" ofType="tabfunction">
+			<id column="id" property="id" />
+			<result column="functioncode" property="functioncode" />
+			<result column="functionname" property="functionname" />
+			<result column="creationtime" property="creationtime" />
+			<association property="parenttabfunction"
+				column="parentid" select="selectParentFun"></association>
+		</collection>
+	</resultMap>
+
+	<select id="selectParentFun" resultType="tabfunction">
+		select * from
+		tab_function where id=#{0}
+	</select>
+
+	<resultMap type="Tabfunction" id="tabfun">
 		<id column="id" property="id" />
 		<result column="functioncode" property="functioncode" />
 		<result column="functionname" property="functionname" />
@@ -12,22 +34,35 @@
 		<association property="parenttabfunction"
 			column="parentid" select="selectParentFun"></association>
 	</resultMap>
-	<select id="selectParentFun" resultType="tabfunction">
-		select * from
-		tab_function where id=#{0}
+
+	<select id="selectTabFunctions" resultMap="tabfun">
+		SELECT * FROM `tab_function`
 	</select>
 
-	<select id="selectTabRoles" resultMap="tabfunction">
-		SELECT * FROM tab_role
+	<select id="selectTabRoles" resultMap="roleMap">
+		SELECT r.rid,
+		r.rode,r.`rname`,r.rstatus,r.creationTime AS
+		rtime,r.createby,f.id,f.functioncode,f.creationtime,f.`functionName`,f.`parentid`
+		FROM tab_role AS r
+		LEFT JOIN tbl_perm ON tbl_perm.`rid`=r.`rid`
+		LEFT
+		JOIN `tab_function` AS f ON f.`id`=tbl_perm.`fid`
 	</select>
-
-	<select id="selectTabRole" resultMap="tabfunction">
-		SELECT * FROM tab_role
-		<where>
-			<if test="rid!=null">
-				rid=#{rid}
-			</if>
-		</where>
-	</select>
+	<!-- 新增角色权限表 -->
+	<insert id="insertFpems">
+		INSERT INTO `tab_role`(`rid`,`rode`,`rname`,`creationTime`,`createby`)
+		VALUES(#{tabRole.rid},#{tabRole.rode},#{tabRole.rname},now(),#{tabRole.createby});
+		INSERT INTO `tbl_perm`(`rid`,`fid`,`creationTime`)
+		VALUES
+		<foreach collection="tabRole.tblperms" item="fpem" separator=",">
+			(#{fpem.rid},#{fpem.fid},now())
+		</foreach>
+		;
+	</insert>
+	<!-- 删除角色权限-->
+	<delete id="deleteFpems">		
+		DELETE FROM `tbl_perm` WHERE `rid`=#{rid};
+		DELETE FROM `tab_role` WHERE `rid`=#{rid};
+	</delete>
 
 </mapper>

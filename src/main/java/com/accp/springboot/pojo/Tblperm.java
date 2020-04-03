@@ -52,4 +52,15 @@ public class Tblperm {
     public void setCreateby(String createby) {
         this.createby = createby == null ? null : createby.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Tblperm [pid=" + pid + ", rid=" + rid + ", fid=" + fid + ", creationtime=" + creationtime
+				+ ", createby=" + createby + ", getPid()=" + getPid() + ", getRid()=" + getRid() + ", getFid()="
+				+ getFid() + ", getCreationtime()=" + getCreationtime() + ", getCreateby()=" + getCreateby()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+    
+    
 }
