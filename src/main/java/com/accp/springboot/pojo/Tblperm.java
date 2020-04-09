@@ -2,7 +2,13 @@ package com.accp.springboot.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("tbl_perm")
 public class Tblperm {
+	@TableId(value="pid",type = IdType.AUTO)
     private Integer pid;
 
     private Integer rid;
@@ -52,15 +58,4 @@ public class Tblperm {
     public void setCreateby(String createby) {
         this.createby = createby == null ? null : createby.trim();
     }
-
-	@Override
-	public String toString() {
-		return "Tblperm [pid=" + pid + ", rid=" + rid + ", fid=" + fid + ", creationtime=" + creationtime
-				+ ", createby=" + createby + ", getPid()=" + getPid() + ", getRid()=" + getRid() + ", getFid()="
-				+ getFid() + ", getCreationtime()=" + getCreationtime() + ", getCreateby()=" + getCreateby()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
-    
-    
 }
