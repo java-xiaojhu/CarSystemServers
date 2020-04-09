@@ -14,9 +14,14 @@ public class MechanicService {
 	@Resource
 	private IMechanicDAO iMechanicDao;
 
-	public PageInfo<MechanicVo> pageList(int num, int size, int teamId) {
+	public PageInfo<MechanicVo> pageList(int num, int size) {
 		PageHelper.startPage(num, size);
-		return new PageInfo<MechanicVo>(iMechanicDao.pageList(teamId));
+		return new PageInfo<MechanicVo>(iMechanicDao.pageList());
+	}
+
+	public PageInfo<MechanicVo> pageList(int num, int size,  String optionName) {
+		PageHelper.startPage(num, size);
+		return new PageInfo<MechanicVo>(iMechanicDao.pageListByName( optionName));
 	}
 
 	public int updateMechanic(MechanicVo mechanicVo) {
@@ -25,5 +30,9 @@ public class MechanicService {
 
 	public int addMechanic(MechanicVo mechanicVo) {
 		return iMechanicDao.insertSelective(mechanicVo);
+	}
+
+	public int deleteMechanic(int id) {
+		return iMechanicDao.deleteByPrimaryKey(id);
 	}
 }

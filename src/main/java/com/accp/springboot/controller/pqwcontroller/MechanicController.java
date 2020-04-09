@@ -19,10 +19,16 @@ public class MechanicController {
 	@Resource
 	private MechanicService mechanicService;
 
-	// 不带搜索
-	@GetMapping("pageList/{num}/{size}/{id}")
-	public PageInfo<MechanicVo> pageList(@PathVariable int num, @PathVariable int size, @PathVariable int id) {
-		return mechanicService.pageList(num, size, id);
+	// 不带条件搜索
+	@GetMapping("pageList/{num}/{size}")
+	public PageInfo<MechanicVo> pageList(@PathVariable int num, @PathVariable int size) {
+		return mechanicService.pageList(num, size);
+	}
+
+	// 带条件搜索
+	@GetMapping("pageList/{num}/{size}/{optionName}")
+	public PageInfo<MechanicVo> pageList(@PathVariable int num, @PathVariable int size, @PathVariable String optionName) {
+		return mechanicService.pageList(num, size, optionName);
 	}
 
 	@PostMapping("updateMechanic")
@@ -32,7 +38,11 @@ public class MechanicController {
 
 	@PostMapping("addMechanic")
 	public int addMechanic(@RequestBody MechanicVo mechanicVo) {
-		System.err.println(mechanicVo.toString());
-		return 0;// addMechanic(mechanicVo);
+		return mechanicService.addMechanic(mechanicVo);
+	}
+
+	@PostMapping("deleteMechanic/{id}")
+	public int deleteMechanic(@PathVariable int id) {
+		return mechanicService.deleteMechanic(id);
 	}
 }
