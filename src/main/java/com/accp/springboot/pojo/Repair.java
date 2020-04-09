@@ -22,8 +22,29 @@ public class Repair {
     private Float repairprice;
 
     private String reamks;
+    
+    private Integer restate;
+    
+    private String address;
+    
 
-    public String getRepairnumber() {
+    public Integer getRestate() {
+		return restate;
+	}
+
+	public void setRestate(Integer restate) {
+		this.restate = restate;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getRepairnumber() {
         return repairnumber;
     }
 

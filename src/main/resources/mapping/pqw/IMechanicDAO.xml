@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.springboot.dao.pqwdao.IMechanicDAO">
+	<resultMap id="BaseResultMap"
+		type="com.accp.springboot.vo.pqwvo.MechanicVo">
+		<id column="mechanicid" jdbcType="INTEGER" property="mechanicid" />
+		<result column="mechanicname" jdbcType="VARCHAR"
+			property="mechanicname" />
+		<result column="mechanicsex" jdbcType="VARCHAR"
+			property="mechanicsex" />
+		<result column="mechanicphone" jdbcType="VARCHAR"
+			property="mechanicphone" />
+		<result column="contactphone" jdbcType="VARCHAR"
+			property="contactphone" />
+		<result column="urgentphone" jdbcType="VARCHAR"
+			property="urgentphone" />
+		<result column="groupleader" jdbcType="INTEGER"
+			property="groupleader" />
+		<result column="teamid" jdbcType="INTEGER" property="teamid" />
+		<result column="starclassid" jdbcType="INTEGER"
+			property="starclassid" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+		<association property="team" column="teamid"
+			select="selectTeam" />
+		<association property="starClass" column="starclassid"
+			select="selectStarClass" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		mechanicid, mechanicname, mechanicsex, mechanicphone,
+		contactphone, urgentphone,
+		groupleader, teamid, starclassid, remarks
+	</sql>
+	<select id="selectTeam" resultType="java.lang.String">
+		SELECT teamname FROM team
+		WHERE
+		teamid = #{0}
+	</select>
+	<select id="selectStarClass" resultType="java.lang.String">
+		SELECT starclassname
+		FROM starclass
+		WHERE starclassid = #{0}
+	</select>
+	<select id="selectByPrimaryKey"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from mechanic
+		where mechanicid = #{mechanicid,jdbcType=INTEGER}
+	</select>
+	<select id="pageList" resultMap="BaseResultMap">
+		SELECT * FROM mechanic WHERE
+		teamid = #{teamid}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from mechanic
+		where mechanicid =
+		#{mechanicid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" keyColumn="starclassid"
+		keyProperty="starclassid"
+		parameterType="com.accp.springboot.vo.pqwvo.MechanicVo"
+		useGeneratedKeys="true">
+		insert into mechanic (mechanicid, mechanicname,
+		mechanicsex,
+		mechanicphone, contactphone, urgentphone,
+		groupleader,
+		teamid, remarks
+		)
+		values (#{mechanicid,jdbcType=INTEGER},
+		#{mechanicname,jdbcType=VARCHAR},
+		#{mechanicsex,jdbcType=VARCHAR},
+		#{mechanicphone,jdbcType=VARCHAR}, #{contactphone,jdbcType=VARCHAR},
+		#{urgentphone,jdbcType=VARCHAR},
+		#{groupleader,jdbcType=INTEGER},
+		#{teamid,jdbcType=INTEGER},
+		#{remarks,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" keyColumn="starclassid"
+		keyProperty="starclassid"
+		parameterType="com.accp.springboot.vo.pqwvo.MechanicVo"
+		useGeneratedKeys="true">
+		insert into mechanic
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mechanicid != null">
+				mechanicid,
+			</if>
+			<if test="mechanicname != null">
+				mechanicname,
+			</if>
+			<if test="mechanicsex != null">
+				mechanicsex,
+			</if>
+			<if test="mechanicphone != null">
+				mechanicphone,
+			</if>
+			<if test="contactphone != null">
+				contactphone,
+			</if>
+			<if test="urgentphone != null">
+				urgentphone,
+			</if>
+			<if test="groupleader != null">
+				groupleader,
+			</if>
+			<if test="teamid != null">
+				teamid,
+			</if>
+			<if test="remarks != null">
+				remarks,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mechanicid != null">
+				#{mechanicid,jdbcType=INTEGER},
+			</if>
+			<if test="mechanicname != null">
+				#{mechanicname,jdbcType=VARCHAR},
+			</if>
+			<if test="mechanicsex != null">
+				#{mechanicsex,jdbcType=VARCHAR},
+			</if>
+			<if test="mechanicphone != null">
+				#{mechanicphone,jdbcType=VARCHAR},
+			</if>
+			<if test="contactphone != null">
+				#{contactphone,jdbcType=VARCHAR},
+			</if>
+			<if test="urgentphone != null">
+				#{urgentphone,jdbcType=VARCHAR},
+			</if>
+			<if test="groupleader != null">
+				#{groupleader,jdbcType=INTEGER},
+			</if>
+			<if test="teamid != null">
+				#{teamid,jdbcType=INTEGER},
+			</if>
+			<if test="remarks != null">
+				#{remarks,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.accp.springboot.vo.pqwvo.MechanicVo">
+		update mechanic
+		<set>
+			<if test="mechanicname != null">
+				mechanicname = #{mechanicname,jdbcType=VARCHAR},
+			</if>
+			<if test="mechanicsex != null">
+				mechanicsex = #{mechanicsex,jdbcType=VARCHAR},
+			</if>
+			<if test="mechanicphone != null">
+				mechanicphone = #{mechanicphone,jdbcType=VARCHAR},
+			</if>
+			<if test="contactphone != null">
+				contactphone = #{contactphone,jdbcType=VARCHAR},
+			</if>
+			<if test="urgentphone != null">
+				urgentphone = #{urgentphone,jdbcType=VARCHAR},
+			</if>
+			<if test="groupleader != null">
+				groupleader = #{groupleader,jdbcType=INTEGER},
+			</if>
+			<if test="teamid != null">
+				teamid = #{teamid,jdbcType=INTEGER},
+			</if>
+			<if test="starclassid != null">
+				starclassid = #{starclassid,jdbcType=INTEGER},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where mechanicid = #{mechanicid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.accp.springboot.vo.pqwvo.MechanicVo">
+		update mechanic
+		set mechanicname =
+		#{mechanicname,jdbcType=VARCHAR},
+		mechanicsex =
+		#{mechanicsex,jdbcType=VARCHAR},
+		mechanicphone =
+		#{mechanicphone,jdbcType=VARCHAR},
+		contactphone =
+		#{contactphone,jdbcType=VARCHAR},
+		urgentphone =
+		#{urgentphone,jdbcType=VARCHAR},
+		groupleader =
+		#{groupleader,jdbcType=INTEGER},
+		teamid = #{teamid,jdbcType=INTEGER},
+		starclassid = #{starclassid,jdbcType=INTEGER},
+		remarks =
+		#{remarks,jdbcType=VARCHAR}
+		where mechanicid =
+		#{mechanicid,jdbcType=INTEGER}
+	</update>
+</mapper>

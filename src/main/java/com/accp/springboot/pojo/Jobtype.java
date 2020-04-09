@@ -1,6 +1,12 @@
 package com.accp.springboot.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+@TableName("jobtype")
 public class Jobtype {
+
+	@TableId(value="jobid", type = IdType.AUTO)
     private Integer jobid;
 
     private String jobname;

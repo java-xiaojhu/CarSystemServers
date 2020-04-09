@@ -67,5 +67,32 @@ public class RoleService {
 		}		
 		return num;		
 	}
+	/**
+	 * 修改角色
+	 * @param tabRole
+	 * @return
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public Integer modifyRole(TabRole tabRole) {		
+		return iRoleDao.updateTabRole(tabRole);		
+	}
+	/**
+	 * 新增角色
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public Integer InsertRole(TabRole tabRole) {		
+		return iRoleDao.insertTabRole(tabRole);		
+	}
+	/**
+	 * 检查角色
+	 * @param rode
+	 * @param rname
+	 * @return
+	 */
+	public TabRole findRole(String rode ,String rname) {
+		
+		return iRoleDao.selectRole(rode, rname);
+	}
+	
 
 }

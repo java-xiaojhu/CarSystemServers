@@ -1,6 +1,11 @@
 package com.accp.springboot.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+@TableName("company")
 public class Company {
+	@TableId(value="companyid", type = IdType.AUTO)
     private Integer companyid;
 
     private String companyname;

@@ -42,4 +42,15 @@ public interface IRoleDao extends BaseMapper<TabRole> {
 	 * 新增角色
 	 */
 	Integer insertTabRole(@Param("role")TabRole role);
+	
+	/**
+	 * 修改角色
+	 */
+	Integer updateTabRole(@Param("role")TabRole role);
+	
+	/**
+	 *检查角色
+	 */	
+	TabRole selectRole(@Param("rode") String rode, @Param("rname") String rname);
+	
 }

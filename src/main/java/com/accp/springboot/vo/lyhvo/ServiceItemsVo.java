@@ -1,12 +1,7 @@
-package com.accp.springboot.pojo;
+package com.accp.springboot.vo.lyhvo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
-@TableName("serviceitems")
-public class Serviceitems {
-	@TableId(value = "serviceitemid", type = IdType.AUTO)
+public class ServiceItemsVo {
+	
 	private Integer serviceitemid;// 服务项目编号
 
 	private String servicename;// 服务名称
@@ -16,8 +11,18 @@ public class Serviceitems {
 	private Float servicepricevip;// 会员价
 
 	private Integer itemid;// 类别编号
+	
+	private String itemname;
 
 	private String servicremks;// 备注
+	
+	public String getItemname() {
+		return itemname;
+	}
+
+	public void setItemname(String itemname) {
+		this.itemname = itemname;
+	}
 
 	public Integer getServiceitemid() {
 		return serviceitemid;
@@ -32,9 +37,26 @@ public class Serviceitems {
 	}
 
 	public void setServicename(String servicename) {
-		this.servicename = servicename == null ? null : servicename.trim();
+		this.servicename = servicename;
 	}
 
+	public Float getServiceprice() {
+		return serviceprice;
+	}
+
+	public void setServiceprice(Float serviceprice) {
+		this.serviceprice = serviceprice;
+	}
+
+
+
+	public String getServicremks() {
+		return servicremks;
+	}
+
+	public void setServicremks(String servicremks) {
+		this.servicremks = servicremks;
+	}
 
 	public Float getServicepricevip() {
 		return servicepricevip;
@@ -52,19 +74,5 @@ public class Serviceitems {
 		this.itemid = itemid;
 	}
 
-	public Float getServiceprice() {
-		return serviceprice;
-	}
 
-	public void setServiceprice(Float serviceprice) {
-		this.serviceprice = serviceprice;
-	}
-
-	public String getServicremks() {
-		return servicremks;
-	}
-
-	public void setServicremks(String servicremks) {
-		this.servicremks = servicremks == null ? null : servicremks.trim();
-	}
 }

@@ -6,6 +6,8 @@
 	<resultMap type="Emp" id="userMap">
 		<id column="empid" property="empid" />
 		<result column="empname" property="empname" />
+		<result column="departmentname" property="departmentname" />
+		<result column="positionname" property="positionname" />
 		<association property="tabRole" resultMap="roleMap" />
 	</resultMap>
 	<resultMap type="TabRole" id="roleMap">
@@ -32,7 +34,8 @@
 
 	<!-- 登录 -->
 	<select id="userLogin" resultMap="userMap">
-		SELECT empid
+		SELECT
+		empid,department.departmentname,`position`.`positionname`
 		,`empname`,r.rid,r.rode,r.`rname`,r.rstatus,r.creationTime,r.createby,f.id,f.functioncode,f.creationtime,f.`functionName`,f.`parentid`
 		FROM emp
 		INNER JOIN
@@ -43,8 +46,13 @@
 		e.`rid`=r.`rid`
 		INNER JOIN `tab_function` AS f ON
 		f.`id`=e.`fid`
+		INNER JOIN `department` ON
+		department.`departmentid`=emp.`departmentid`
+		INNER JOIN `position` ON
+		`position`.`positionid`=emp.`positionid`
 		WHERE
-		`empid`=#{id} AND `emppas`=#{pas}
+		`empid`=#{id} AND
+		`emppas`=#{pas}
 	</select>
 	<!-- 角色控制 -->
 	<select id="selectTabRole" resultMap="roleMap">
@@ -54,6 +62,28 @@
 		INNER JOIN `tab_function` AS f ON f.`id`=tbl_perm.`fid`
 		INNER JOIN tab_role AS r ON r.`rid`=tbl_perm.`rid`
 	</select>
+	<!-- 查询所有的员工 -->
+	<select id="selectEmps" resultMap="userMap">
+		SELECT empid,department.departmentname,`position`.`positionname`
+		,`empname`,r.rid,r.rode,r.`rname`,r.rstatus,r.creationTime,r.createby,f.id,f.functioncode,f.creationtime,f.`functionName`,f.`parentid`
+		FROM emp
+		INNER JOIN
+		tab_role AS r ON r.`rid`=emp.`roleid`
+		INNER JOIN
+		`tbl_perm` AS e
+		ON
+		e.`rid`=r.`rid`
+		INNER JOIN `tab_function` AS f ON
+		f.`id`=e.`fid`
+		INNER JOIN `department` ON
+		department.`departmentid`=emp.`departmentid`
+		INNER JOIN `position` ON
+		`position`.`positionid`=emp.`positionid`
+	</select>
+	
+	<update id="">
+	
+	</update>
 
 
 

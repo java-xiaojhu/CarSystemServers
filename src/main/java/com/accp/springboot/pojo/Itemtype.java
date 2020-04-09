@@ -2,16 +2,31 @@ package com.accp.springboot.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+@TableName("itemtype")
 public class Itemtype {
-    private Integer itemid;
+	@TableId(value="itemid", type = IdType.AUTO)
+    private Integer itemid;//
 
     private String itemname;
 
     private Integer itemfid;
+    
+    private Itemtype pitemtype;
 
     private Date itemdate;
 
-    public Integer getItemid() {
+	public Itemtype getPitemtype() {
+		return pitemtype;
+	}
+
+	public void setPitemtype(Itemtype pitemtype) {
+		this.pitemtype = pitemtype;
+	}
+
+	public Integer getItemid() {
         return itemid;
     }
 
@@ -42,4 +57,12 @@ public class Itemtype {
     public void setItemdate(Date itemdate) {
         this.itemdate = itemdate;
     }
+
+	@Override
+	public String toString() {
+		return "Itemtype [itemid=" + itemid + ", itemname=" + itemname + ", itemfid=" + itemfid + ", pitemtype="
+				+ pitemtype + ", itemdate=" + itemdate + "]";
+	}
+    
+    
 }

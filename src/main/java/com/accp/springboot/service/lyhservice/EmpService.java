@@ -1,5 +1,7 @@
 package com.accp.springboot.service.lyhservice;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -12,24 +14,21 @@ import com.accp.springboot.vo.lyhvo.*;
 public class EmpService {
 	@Resource
 	private IEmpDao iEmpDao;
-
+	/**
+	 * 登录
+	 * @param id
+	 * @param pas
+	 * @return
+	 */
 	public Emp findUserLogin(Integer id, String pas) {
 		return iEmpDao.userLogin(id, pas);
 	}
-	
 	/**
-	 * 查询所有的角色的权限
+	 * 查询所有的员工
 	 * @return
 	 */
-	public TabRole findTabRole() {
-		return iEmpDao.selectTabRole();
-	};
-	/**
-	 * 查询所有的功能
-	 * @return
-	 */
-	public Tabfunction findTabfunction() {
-		return iEmpDao.selectTabfunction();
-	};
+	public List<Emp> findEmps(){
+		return iEmpDao.selectEmps();
+	}
 
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.accp.springboot.dao.lyhdao.IServiceItemDao">
+	<resultMap type="Itemtype" id="itemtype">
+		<id column="itemid" property="itemid" />
+		<result column="itemname" property="itemname" />
+		<result column="itemdate" property="itemdate" />
+		<result column="itemfid" property="itemfid" />
+		<association property="pitemtype" column="itemfid"
+			select="selectfitemtype"></association>
+	</resultMap>
+	<!-- 查询父的选项 -->
+	<select id="selectfitemtype" resultType="Itemtype">
+		SELECT * FROM `itemtype`
+		WHERE
+		`itemid`=#{0}
+	</select>
+	<!-- 查询菜单 -->
+	<select id="selectItemytpe" resultMap="itemtype">
+		SELECT * FROM `itemtype`
+	</select>
+	<!-- 查询该菜单的服务项目 -->
+	<select id="selectItems" resultType="ServiceItemsVo">
+		SELECT * FROM `serviceitems`
+		INNER JOIN
+		`itemtype` ON
+		itemtype.`itemid`=serviceitems.`itemid`
+		<where>
+			<if test="itemid!=null">
+				itemtype.`itemid`=#{itemid}
+			</if>
+		</where>
+	</select>
+	<!--新增服务类型 -->
+	<insert id="addItemType">
+		INSERT INTO `itemtype`(`itemname`,itemfid,`itemdate`)
+		VALUES(#{itemtype.itemname},#{itemtype.itemfid},now())
+	</insert>
+	<!--修改服务类型 -->
+	<update id="updateItemtype">
+		UPDATE `itemtype` SET`itemname`=#{itemtype.itemname}
+		WHERE `itemid`=#{itemtype.itemid}
+	</update>
+	<!--删除服务类型 -->
+	<delete id="deleteItemType">
+		DELETE FROM `itemtype` where `itemid`=#{itemid}
+	</delete>
+	<!-- 查询项目类型 -->
+	<select id="selectItemytpes" resultType="Itemtype">
+		SELECT* FROM `itemtype` WHERE `itemfid`!=0
+	</select>
+
+</mapper>

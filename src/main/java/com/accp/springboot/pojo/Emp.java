@@ -44,15 +44,35 @@ public class Emp {
 
 	private Integer departmentid;
 
+	private String departmentname;
+
 	private Integer positionid;
+
+	private String positionname;
 
 	private Integer roleid;
 
 	private String reasonsleaving;
 
 	private Date leavedate;
-	
+
 	private TabRole tabRole;
+
+	public String getDepartmentname() {
+		return departmentname;
+	}
+
+	public void setDepartmentname(String departmentname) {
+		this.departmentname = departmentname;
+	}
+
+	public String getPositionname() {
+		return positionname;
+	}
+
+	public void setPositionname(String positionname) {
+		this.positionname = positionname;
+	}
 
 	public TabRole getTabRole() {
 		return tabRole;

@@ -23,6 +23,9 @@ import com.accp.springboot.pojo.TabRole;
 import com.accp.springboot.pojo.Tabfunction;
 import com.accp.springboot.pojo.Tblperm;
 import com.accp.springboot.service.lyhservice.RoleService;
+import com.accp.springboot.util.PageBean;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -36,8 +39,8 @@ public class RoleController {
 	 * 
 	 * @return
 	 */
-	@GetMapping
-	public List findTabRole() {		
+	@GetMapping("/{n}")
+	public  PageBean findTabRole(@PathVariable Integer n) {		
 		List rotree = new ArrayList();
 		roleService.findTabRoles().forEach(temp -> {
 			Map<String, Object> role = new HashMap<String, Object>();
@@ -46,7 +49,8 @@ public class RoleController {
 			role.put("functions", this.getUserFunTree(temp));
 			rotree.add(role);		
 		});
-		return rotree;
+		PageBean pa=new PageBean(n,rotree.size(),4,rotree);
+		return pa ;
 	}
 	/**
 	 * 查看所有的模块权限
@@ -57,20 +61,79 @@ public class RoleController {
 		return this.getUserFunTree(roleService.findTabFunctions());
 	}
 	/**
+	 * 检查角色
+	 * @param n
+	 * @return
+	 */
+	@GetMapping("Verification/{rode}/{rname}")
+	public   Map<String, String>  findTabRole(@PathVariable String rode ,@PathVariable String rname) {	
+		Map<String, String> message = new HashMap<String, String>();	
+		if (roleService.findRole(rode, rname)==null) {		
+			message.put("code", "200");		
+			message.put("msg", "");
+		} else {
+			message.put("code", "300");
+			message.put("msg", "已存在");
+		}
+		return message;
+	}
+	/**
+	 * 修改角色
+	 * @param tblperms
+	 * @param rid
+	 * @return
+	 */
+	@PutMapping("/Role/modify")
+	public Map<String, String> modifyRole(@RequestBody TabRole tabRole){	
+		Map<String, String> message = new HashMap<String, String>();	
+		if (roleService.modifyRole(tabRole)>0) {		
+			message.put("code", "200");		
+			message.put("msg", "修改角色成功");
+		} else {
+			message.put("code", "300");
+			message.put("msg", "修改角色失败");
+		}
+		return message;
+	};
+	
+	
+	
+	/**
+	 * 新增角色
+	 * @param tblperms
+	 * @param rid
+	 * @return
+	 */
+	@PostMapping("Role")
+	public Map<String, String> saveRole(@RequestBody TabRole tabRole){	
+		Map<String, String> message = new HashMap<String, String>();	
+		if (roleService.InsertRole(tabRole)>0) {		
+			message.put("code", "200");		
+			message.put("msg", "新增角色成功");
+		} else {
+			message.put("code", "300");
+			message.put("msg", "新增角色失败");
+		}
+		return message;
+	};
+	
+	
+	
+	/**
 	 * 修改用户权限
 	 * @param tblperms
 	 * @param rid
 	 * @return
 	 */
 	@PutMapping("Role")
-	public Map<String, String> addAuctionRecord(@RequestBody TabRole tabRole){	
+	public Map<String, String> modiyfRoles(@RequestBody TabRole tabRole){	
 		Map<String, String> message = new HashMap<String, String>();	
 		if (roleService.modifyFpem(tabRole)>0) {		
 			message.put("code", "200");		
 			message.put("msg", "修改权限成功");
 		} else {
 			message.put("code", "300");
-			message.put("msg", "修改失败");
+			message.put("msg", "修改权限失败");
 		}
 		return message;
 	};
@@ -110,17 +173,16 @@ public class RoleController {
 						if (fun.getFunctionname().equals(fun1.getParenttabfunction().getFunctionname())) {
 							Map<String, Object> n1 = new HashMap<String, Object>();
 							n1.put("id", fun1.getFunctioncode());
+							n1.put("fid", fun1.getId());
 							n1.put("text", fun1.getFunctionname());
 							nodeChild.add(n1);
 						}
 					}
-					n.put("children2", nodeChild);
-					System.out.println("子节点"+"\t"+nodeChild);
+					n.put("children2", nodeChild);			
 					topnodeChild.add(n);
 				}
 			}
-			topnode.put("children1", topnodeChild);
-			System.out.println("父子节点"+"\t"+topnodeChild);
+			topnode.put("children1", topnodeChild);		
 			tree.add(topnode);
 		}
 		System.out.println(tabRole.getRname()+"\t"+tree);

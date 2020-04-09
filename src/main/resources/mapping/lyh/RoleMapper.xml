@@ -36,7 +36,8 @@
 	</resultMap>
 
 	<select id="selectTabFunctions" resultMap="tabfun">
-		SELECT * FROM `tab_function`
+		SELECT * FROM
+		`tab_function`
 	</select>
 
 	<select id="selectTabRoles" resultMap="roleMap">
@@ -54,15 +55,35 @@
 		VALUES(#{tabRole.rid},#{tabRole.rode},#{tabRole.rname},now(),#{tabRole.createby});
 		INSERT INTO `tbl_perm`(`rid`,`fid`,`creationTime`)
 		VALUES
-		<foreach collection="tabRole.tblperms" item="fpem" separator=",">
+		<foreach collection="tabRole.tblperms" item="fpem"
+			separator=",">
 			(#{fpem.rid},#{fpem.fid},now())
 		</foreach>
 		;
 	</insert>
-	<!-- 删除角色权限-->
-	<delete id="deleteFpems">		
+	<!-- 删除角色权限 -->
+	<delete id="deleteFpems">
 		DELETE FROM `tbl_perm` WHERE `rid`=#{rid};
-		DELETE FROM `tab_role` WHERE `rid`=#{rid};
+		DELETE FROM
+		`tab_role` WHERE
+		`rid`=#{rid};
 	</delete>
+	<!--修改角色 -->
+	<update id="updateTabRole">
+		UPDATE `tab_role` SET `rname`=#{role.rname}
+		,rode=#{role.rode}
+		WHERE rid=#{role.rid}
+	</update>
+	<!-- 检查角色 -->
+	<select id="selectRole" resultType="TabRole">
+		SELECT * FROM`tab_role`
+		WHERE
+		`rode`= #{rode} OR `rname`=#{rname}
+	</select>
+	<!-- 新增角色-->
+	<insert id="insertTabRole">
+		INSERT INTO `tab_role`(`rode`,`rname`,`creationTime`)
+		VALUES(#{role.rode},#{role.rname},now());
+	</insert>
 
 </mapper>
