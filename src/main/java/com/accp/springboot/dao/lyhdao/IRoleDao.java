@@ -2,6 +2,15 @@ package com.accp.springboot.dao.lyhdao;
 
 import java.util.List;
 
+<<<<<<< HEAD
+import org.springframework.stereotype.Service;
+
+import com.accp.springboot.vo.lyhvo.MenuVo;
+
+public interface IRoleDao {
+	
+	List<MenuVo> authorityMenu(); 
+=======
 import org.apache.ibatis.annotations.Param;
 
 import com.accp.springboot.pojo.TabRole;
@@ -21,6 +30,7 @@ public interface IRoleDao extends BaseMapper<TabRole> {
 	 * @return
 	 */
 	TabRole selectTabRole(@Param("rid")Integer rid);
+<<<<<<< HEAD
 	/**
 	 * 查询所有的功能模块
 	 * @return
@@ -53,4 +63,8 @@ public interface IRoleDao extends BaseMapper<TabRole> {
 	 */	
 	TabRole selectRole(@Param("rode") String rode, @Param("rname") String rname);
 	
+=======
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
+
+>>>>>>> branch 'master' of https://github.com/java-xiaojhu/CarSystemServers.git
 }

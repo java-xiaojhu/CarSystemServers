@@ -19,10 +19,13 @@ public class Team implements Serializable {
 	@TableId(value = "teamid", type = IdType.AUTO)
 	private Integer teamid;
 
+<<<<<<< HEAD
 	/**
 	 * 班组名称
 	 */
 	private String teamname;
+=======
+>>>>>>> branch 'master' of https://github.com/java-xiaojhu/CarSystemServers.git
 
 	/**
 	 * 车间表ID
@@ -47,6 +50,7 @@ public class Team implements Serializable {
 		this.teamname = teamname;
 	}
 
+<<<<<<< HEAD
 	public Integer getWorkshopid() {
 		return workshopid;
 	}
@@ -97,4 +101,6 @@ public class Team implements Serializable {
 		sb.append("]");
 		return sb.toString();
 	}
+=======
+>>>>>>> branch 'master' of https://github.com/java-xiaojhu/CarSystemServers.git
 }

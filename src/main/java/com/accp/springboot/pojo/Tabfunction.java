@@ -2,19 +2,27 @@ package com.accp.springboot.pojo;
 
 import java.util.Date;
 
+<<<<<<< HEAD
+=======
 import com.accp.springboot.vo.lyhvo.TabFunctionVo;
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("tab_function")
 public class Tabfunction {
+<<<<<<< HEAD
+	@TableId(value="id",type = IdType.AUTO)
+    private Integer id;
+=======
 	@TableId(value = "id", type = IdType.AUTO)
 	private Integer id;
 
 	private String functioncode;
 
 	private String functionname;
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
 	private Integer parentid;
 
@@ -26,6 +34,23 @@ public class Tabfunction {
 		return parenttabfunction;
 	}
 
+<<<<<<< HEAD
+    private Date creationtime;
+    
+    private Tabfunction tabfunction;
+    
+    public Tabfunction getTabfunction() {
+		return tabfunction;
+	}
+
+	public void setTabfunction(Tabfunction tabfunction) {
+		this.tabfunction = tabfunction;
+	}
+
+	public Integer getId() {
+        return id;
+    }
+=======
 	public void setParenttabfunction(Tabfunction parenttabfunction) {
 		this.parenttabfunction = parenttabfunction;
 	}
@@ -33,6 +58,7 @@ public class Tabfunction {
 	public Integer getId() {
 		return id;
 	}
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
 	public void setId(Integer id) {
 		this.id = id;

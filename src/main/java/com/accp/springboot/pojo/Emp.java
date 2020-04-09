@@ -2,6 +2,15 @@ package com.accp.springboot.pojo;
 
 import java.util.Date;
 
+<<<<<<< HEAD
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+@TableName("emp")
+public class Emp {
+	@TableId(value="empid",type = IdType.AUTO)
+    private Integer empid;
+=======
 import com.accp.springboot.vo.lyhvo.TabRoleVo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -15,6 +24,7 @@ public class Emp {
 	private String empname;
 
 	private String emppas;
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
 	private String empsex;
 
@@ -78,6 +88,23 @@ public class Emp {
 		return tabRole;
 	}
 
+<<<<<<< HEAD
+    private Date leavedate;
+    
+    private TabRole tabRole;
+
+    public TabRole getTabRole() {
+		return tabRole;
+	}
+
+	public void setTabRole(TabRole tabRole) {
+		this.tabRole = tabRole;
+	}
+
+	public Integer getEmpid() {
+        return empid;
+    }
+=======
 	public void setTabRole(TabRole tabRole) {
 		this.tabRole = tabRole;
 	}
@@ -85,6 +112,7 @@ public class Emp {
 	public Integer getEmpid() {
 		return empid;
 	}
+>>>>>>> 6882099cf96694140348758c8ca59b9a37d6824e
 
 	public void setEmpid(Integer empid) {
 		this.empid = empid;

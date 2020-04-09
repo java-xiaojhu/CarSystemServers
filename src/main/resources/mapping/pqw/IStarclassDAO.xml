@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.springboot.dao.pqwdao.IStarclassDAO">
@@ -60,4 +61,68 @@
       royalty = #{royalty,jdbcType=REAL}
     where starclassid = #{starclassid,jdbcType=INTEGER}
   </update>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.springboot.dao.pqwdao.IStarclassDAO">
+  <resultMap id="BaseResultMap" type="com.accp.springboot.pojo.Starclass">
+    <id column="starclassid" jdbcType="INTEGER" property="starclassid" />
+    <result column="starclassname" jdbcType="VARCHAR" property="starclassname" />
+    <result column="royalty" jdbcType="REAL" property="royalty" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    starclassid, starclassname, royalty
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from starclass
+    where starclassid = #{starclassid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from starclass
+    where starclassid = #{starclassid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="starclassid" keyProperty="starclassid" parameterType="com.accp.springboot.pojo.Starclass" useGeneratedKeys="true">
+    insert into starclass (starclassname, royalty)
+    values (#{starclassname,jdbcType=VARCHAR}, #{royalty,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" keyColumn="starclassid" keyProperty="starclassid" parameterType="com.accp.springboot.pojo.Starclass" useGeneratedKeys="true">
+    insert into starclass
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="starclassname != null">
+        starclassname,
+      </if>
+      <if test="royalty != null">
+        royalty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="starclassname != null">
+        #{starclassname,jdbcType=VARCHAR},
+      </if>
+      <if test="royalty != null">
+        #{royalty,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.springboot.pojo.Starclass">
+    update starclass
+    <set>
+      <if test="starclassname != null">
+        starclassname = #{starclassname,jdbcType=VARCHAR},
+      </if>
+      <if test="royalty != null">
+        royalty = #{royalty,jdbcType=REAL},
+      </if>
+    </set>
+    where starclassid = #{starclassid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.springboot.pojo.Starclass">
+    update starclass
+    set starclassname = #{starclassname,jdbcType=VARCHAR},
+      royalty = #{royalty,jdbcType=REAL}
+    where starclassid = #{starclassid,jdbcType=INTEGER}
+  </update>
+>>>>>>> branch 'master' of https://github.com/java-xiaojhu/CarSystemServers.git
 </mapper>
